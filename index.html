@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Réparer tes schémas d'enfance · FEMME-CHOISIE™</title>
+<meta name="description" content="Coaching FEMME-CHOISIE™. Le vrai travail sur les blessures d'enfance qui dirigent tes choix amoureux.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FDF2F8;
+  --bg-card:rgba(255,255,255,0.65);
+  --bg-card-hover:rgba(255,255,255,0.85);
+  --border:rgba(157,23,77,0.08);
+  --border-hover:rgba(157,23,77,0.15);
+  --text:#831843;
+  --text-2:#9D174D;
+  --text-muted:rgba(157,23,77,0.45);
+  --accent:#E11D48;
+  --accent-light:#FB7185;
+  --accent-glow:rgba(225,29,72,0.15);
+  --accent-bg:rgba(225,29,72,0.05);
+  --amber:#F59E0B;
+  --green:#059669;
+  --red:#E11D48;
+  --pink:#EC4899;
+  --shadow-soft:0 4px 24px rgba(157,23,77,0.06);
+  --shadow-card:0 2px 12px rgba(157,23,77,0.04);
+  --radius:20px;
+  --radius-sm:12px;
+}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',sans-serif;
+  font-size:15px;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  transition:background .7s ease, color .7s ease;
+}
+body.dark-mode{background:#0B0410;color:#FDE7EE}
+h1,h2,h3,em,.tf{font-family:'Cormorant',serif;letter-spacing:-0.01em}
+em{font-style:italic;font-weight:600;background:linear-gradient(135deg,var(--accent-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+body.dark-mode em{background:linear-gradient(135deg,#FBCFE8,#FB7185);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* === MESH GRADIENT BG === */
+#meshBg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden;transition:opacity .7s ease}
+.mesh-orb{position:absolute;border-radius:50%;filter:blur(130px);opacity:0.35;animation:meshFloat 20s ease-in-out infinite}
+.mesh-orb.o1{width:600px;height:600px;background:radial-gradient(circle,#FBCFE8,transparent);top:-10%;left:-10%;animation-duration:25s}
+.mesh-orb.o2{width:500px;height:500px;background:radial-gradient(circle,#FDE68A,transparent);bottom:-15%;right:-10%;animation-duration:20s;animation-delay:-5s}
+.mesh-orb.o3{width:400px;height:400px;background:radial-gradient(circle,#FDA4AF,transparent);top:40%;right:20%;animation-duration:30s;animation-delay:-10s;opacity:0.2}
+body.dark-mode .mesh-orb.o1{background:radial-gradient(circle,#701a4b,transparent);opacity:0.45}
+body.dark-mode .mesh-orb.o2{background:radial-gradient(circle,#4c1d3f,transparent);opacity:0.4}
+body.dark-mode .mesh-orb.o3{background:radial-gradient(circle,#9f1239,transparent);opacity:0.3}
+@keyframes meshFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-40px) scale(1.05)}50%{transform:translate(-20px,30px) scale(0.95)}75%{transform:translate(40px,20px) scale(1.03)}}
+
+/* === PARTICLES === */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.3}
+
+/* === DECK === */
+#deck{position:fixed;inset:0;z-index:2}
+.slide{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:80px 32px 80px;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(32px) scale(.98);
+  transition:opacity .6s cubic-bezier(.23,1,.32,1), transform .65s cubic-bezier(.23,1,.32,1), filter .5s ease;
+  filter:blur(6px);
+  overflow-y:auto;
+  scrollbar-width:none;
+}
+.slide::-webkit-scrollbar{display:none}
+.slide.active{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);filter:blur(0)}
+.slide.leaving{opacity:0;transform:translateY(-20px) scale(.99);filter:blur(4px)}
+
+.sc{max-width:760px;width:100%;text-align:center;position:relative}
+
+/* === SLIDE ELEMENTS === */
+.tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 16px;
+  background:rgba(225,29,72,0.05);
+  border:1px solid rgba(225,29,72,0.12);
+  border-radius:9999px;
+  margin-bottom:28px;
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;
+  color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;
+  opacity:0;transform:translateY(12px);
+}
+body.dark-mode .tag{background:rgba(253,164,175,0.08);border-color:rgba(253,164,175,0.2);color:#FDA4AF}
+.tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(225,29,72,0.5);animation:pulse 2s ease infinite}
+body.dark-mode .tag .dot{background:#FB7185;box-shadow:0 0 10px rgba(251,113,133,0.6)}
+
+.ttl{
+  font-family:'Cormorant',serif;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.15;
+  letter-spacing:-0.02em;
+  margin-bottom:18px;
+  opacity:0;transform:translateY(20px);
+}
+body.dark-mode .ttl{color:#FDE7EE}
+.ttl.hero{font-size:64px;font-weight:700}
+.ttl.big{font-size:48px;font-weight:600}
+.ttl.mid{font-size:36px;font-weight:600}
+.ttl.sm{font-size:28px;font-weight:600}
+
+.sub{
+  font-family:'Montserrat',sans-serif;
+  font-size:15px;font-weight:400;
+  color:var(--text-2);
+  line-height:1.75;
+  max-width:560px;margin:0 auto 24px;
+  opacity:0;transform:translateY(20px);
+}
+body.dark-mode .sub{color:rgba(253,231,238,0.7)}
+
+.lead{
+  font-family:'Cormorant',serif;
+  font-size:24px;font-weight:500;
+  color:var(--text);
+  line-height:1.5;
+  max-width:640px;margin:0 auto 22px;
+  opacity:0;transform:translateY(20px);
+}
+body.dark-mode .lead{color:#FDE7EE}
+
+.ornament{
+  width:56px;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin:28px auto 24px;
+  opacity:0;
+}
+body.dark-mode .ornament{background:linear-gradient(90deg,transparent,#FB7185,transparent)}
+
+/* Active triggers reveal animation */
+.slide.active .tag{animation:fadeUp .6s cubic-bezier(.23,1,.32,1) .1s forwards}
+.slide.active .ttl{animation:fadeUp .7s cubic-bezier(.23,1,.32,1) .22s forwards}
+.slide.active .sub{animation:fadeUp .7s cubic-bezier(.23,1,.32,1) .36s forwards}
+.slide.active .lead{animation:fadeUp .7s cubic-bezier(.23,1,.32,1) .3s forwards}
+.slide.active .ornament{animation:fadeUp .6s ease .4s forwards}
+
+/* === LISTS === */
+.bullets{
+  list-style:none;
+  max-width:580px;margin:10px auto 24px;
+  text-align:left;
+}
+.bullets li{
+  font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;
+  color:var(--text-2);line-height:1.7;
+  padding:10px 0 10px 22px;
+  position:relative;
+  opacity:0;transform:translateX(-10px);
+}
+body.dark-mode .bullets li{color:rgba(253,231,238,0.75)}
+.bullets li::before{
+  content:"";
+  position:absolute;left:0;top:18px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);opacity:0.5;
+  box-shadow:0 0 8px rgba(225,29,72,0.3);
+}
+body.dark-mode .bullets li::before{background:#FB7185;box-shadow:0 0 10px rgba(251,113,133,0.5)}
+.slide.active .bullets li:nth-child(1){animation:fadeRight .6s ease .45s forwards}
+.slide.active .bullets li:nth-child(2){animation:fadeRight .6s ease .6s forwards}
+.slide.active .bullets li:nth-child(3){animation:fadeRight .6s ease .75s forwards}
+.slide.active .bullets li:nth-child(4){animation:fadeRight .6s ease .9s forwards}
+
+/* === IMPACT BOX === */
+.impact{
+  background:rgba(225,29,72,0.04);
+  border:1px solid rgba(225,29,72,0.14);
+  border-radius:var(--radius);
+  padding:22px 24px;
+  max-width:620px;
+  margin:24px auto 0;
+  text-align:left;
+  opacity:0;transform:translateY(18px);
+  backdrop-filter:blur(16px);
+  box-shadow:var(--shadow-card);
+}
+body.dark-mode .impact{background:rgba(251,113,133,0.08);border-color:rgba(251,113,133,0.22)}
+.impact-lbl{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+  color:var(--accent);letter-spacing:0.16em;text-transform:uppercase;
+  margin-bottom:10px;display:block;
+}
+body.dark-mode .impact-lbl{color:#FB7185}
+.impact-txt{
+  font-family:'Cormorant',serif;font-size:19px;font-weight:500;
+  color:var(--text);line-height:1.5;
+}
+body.dark-mode .impact-txt{color:#FDE7EE}
+.slide.active .impact{animation:fadeUp .7s cubic-bezier(.23,1,.32,1) 1s forwards}
+
+/* === STEPS (4 étapes) === */
+.steps{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  max-width:720px;margin:30px auto 0;
+}
+.step{
+  background:var(--bg-card);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius);
+  padding:22px 20px;
+  text-align:left;
+  backdrop-filter:blur(16px);
+  box-shadow:var(--shadow-card);
+  opacity:0;transform:translateY(18px);
+  transition:all .4s ease;
+}
+body.dark-mode .step{background:rgba(255,255,255,0.04);border-color:rgba(253,164,175,0.15)}
+.step:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft);border-color:var(--border-hover)}
+.step-num{
+  font-family:'Cormorant',serif;font-size:28px;font-weight:700;font-style:italic;
+  background:linear-gradient(135deg,var(--accent),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:6px;display:block;
+}
+body.dark-mode .step-num{background:linear-gradient(135deg,#FB7185,#FDE68A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.step-ttl{
+  font-family:'Cormorant',serif;font-size:20px;font-weight:600;
+  color:var(--text);margin-bottom:8px;
+}
+body.dark-mode .step-ttl{color:#FDE7EE}
+.step-txt{
+  font-family:'Montserrat',sans-serif;font-size:13px;font-weight:400;
+  color:var(--text-2);line-height:1.65;
+}
+body.dark-mode .step-txt{color:rgba(253,231,238,0.75)}
+.slide.active .step:nth-child(1){animation:fadeUp .6s ease .4s forwards}
+.slide.active .step:nth-child(2){animation:fadeUp .6s ease .55s forwards}
+.slide.active .step:nth-child(3){animation:fadeUp .6s ease .7s forwards}
+.slide.active .step:nth-child(4){animation:fadeUp .6s ease .85s forwards}
+
+/* === COMPARE (réaction / réparation) === */
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  max-width:760px;margin:24px auto 0;
+}
+.cbox{
+  border-radius:var(--radius);
+  padding:24px 22px;
+  text-align:left;
+  backdrop-filter:blur(16px);
+  opacity:0;transform:translateY(18px);
+  box-shadow:var(--shadow-card);
+  min-height:180px;
+}
+.cbox.ka{background:rgba(225,29,72,0.05);border:1.5px solid rgba(225,29,72,0.18)}
+.cbox.rep{background:rgba(5,150,105,0.05);border:1.5px solid rgba(5,150,105,0.22)}
+body.dark-mode .cbox.ka{background:rgba(225,29,72,0.1);border-color:rgba(251,113,133,0.25)}
+body.dark-mode .cbox.rep{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.25)}
+.cbox-lbl{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.cbox.ka .cbox-lbl{color:var(--accent)}
+.cbox.rep .cbox-lbl{color:var(--green)}
+body.dark-mode .cbox.ka .cbox-lbl{color:#FB7185}
+body.dark-mode .cbox.rep .cbox-lbl{color:#34D399}
+.cbox-lbl .d{width:8px;height:8px;border-radius:50%;box-shadow:0 0 8px currentColor;background:currentColor}
+.cbox-txt{
+  font-family:'Montserrat',sans-serif;font-size:14px;font-weight:400;
+  color:var(--text-2);line-height:1.7;
+}
+body.dark-mode .cbox-txt{color:rgba(253,231,238,0.78)}
+.slide.active .cbox.ka{animation:fadeUp .6s ease .4s forwards}
+.slide.active .cbox.rep{animation:fadeUp .6s ease .55s forwards}
+
+/* === EXERCISE BOX === */
+.exo{
+  background:var(--bg-card);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius);
+  padding:30px 28px;
+  max-width:620px;margin:24px auto 0;
+  text-align:left;
+  backdrop-filter:blur(16px);
+  box-shadow:var(--shadow-soft);
+  opacity:0;transform:translateY(18px);
+}
+body.dark-mode .exo{background:rgba(255,255,255,0.04);border-color:rgba(253,164,175,0.18)}
+.exo-lbl{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+  color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;
+  margin-bottom:14px;display:block;
+}
+body.dark-mode .exo-lbl{color:#FB7185}
+.exo-txt{
+  font-family:'Montserrat',sans-serif;font-size:14px;font-weight:400;
+  color:var(--text-2);line-height:1.75;margin-bottom:10px;
+}
+body.dark-mode .exo-txt{color:rgba(253,231,238,0.78)}
+.exo-sep{
+  height:1px;background:var(--border);margin:18px 0;
+}
+body.dark-mode .exo-sep{background:rgba(253,164,175,0.15)}
+.slide.active .exo{animation:fadeUp .7s cubic-bezier(.23,1,.32,1) .5s forwards}
+
+/* === SIGNATURE SLIDE === */
+.sig-orn{
+  width:120px;height:120px;margin:0 auto 26px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(225,29,72,0.08),transparent 70%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  opacity:0;transform:scale(.85);
+}
+.sig-orn::before{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(225,29,72,0.18);
+}
+.sig-orn::after{
+  content:"";position:absolute;inset:14px;border-radius:50%;
+  border:1px solid rgba(225,29,72,0.12);
+}
+.sig-orn svg{width:44px;height:44px;color:var(--accent);z-index:1}
+body.dark-mode .sig-orn{background:radial-gradient(circle,rgba(251,113,133,0.12),transparent 70%)}
+body.dark-mode .sig-orn::before{border-color:rgba(251,113,133,0.25)}
+body.dark-mode .sig-orn::after{border-color:rgba(251,113,133,0.15)}
+body.dark-mode .sig-orn svg{color:#FB7185}
+.slide.active .sig-orn{animation:scaleIn .8s cubic-bezier(.23,1,.32,1) forwards}
+
+.sig-cp{
+  font-family:'Montserrat',sans-serif;font-size:12px;font-weight:400;
+  color:var(--text-muted);letter-spacing:0.08em;margin-top:20px;
+  opacity:0;
+}
+body.dark-mode .sig-cp{color:rgba(253,231,238,0.5)}
+.slide.active .sig-cp{animation:fadeUp .6s ease .7s forwards}
+
+/* === QUOTE SLIDE === */
+.qmark{
+  font-family:'Cormorant',serif;
+  font-size:120px;font-weight:700;font-style:italic;
+  line-height:.3;
+  background:linear-gradient(135deg,var(--accent-light),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;
+  opacity:0;transform:scale(.8);
+  display:block;
+}
+body.dark-mode .qmark{background:linear-gradient(135deg,#FBCFE8,#FB7185);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.slide.active .qmark{animation:scaleIn .8s cubic-bezier(.23,1,.32,1) forwards}
+
+.quote{
+  font-family:'Cormorant',serif;
+  font-size:36px;font-weight:500;font-style:italic;
+  color:var(--text);line-height:1.35;
+  max-width:720px;margin:10px auto 18px;
+  opacity:0;transform:translateY(20px);
+}
+body.dark-mode .quote{color:#FDE7EE}
+.slide.active .quote{animation:fadeUp .8s cubic-bezier(.23,1,.32,1) .2s forwards}
+
+.quote.xl{font-size:44px;font-weight:500}
+
+/* === BRAND DOT === */
+.brand{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 18px;
+  background:rgba(225,29,72,0.05);
+  border:1px solid rgba(225,29,72,0.12);
+  border-radius:9999px;
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;
+  color:var(--accent);letter-spacing:0.1em;
+  opacity:0;
+}
+body.dark-mode .brand{background:rgba(251,113,133,0.1);border-color:rgba(251,113,133,0.22);color:#FB7185}
+.brand .bdot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(225,29,72,0.5);animation:pulse 2s ease infinite}
+body.dark-mode .brand .bdot{background:#FB7185;box-shadow:0 0 10px rgba(251,113,133,0.5)}
+.slide.active .brand{animation:fadeUp .6s ease .05s forwards}
+
+/* === CHROME (counter, progress, arrows) === */
+.chrome{position:fixed;inset:0;pointer-events:none;z-index:10}
+.pbar{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--pink),var(--amber));
+  box-shadow:0 0 12px rgba(225,29,72,0.25);
+  transition:width .55s cubic-bezier(.23,1,.32,1);
+  z-index:20;
+  border-radius:0 2px 2px 0;
+}
+body.dark-mode .pbar{background:linear-gradient(90deg,#FB7185,#EC4899,#FDE68A)}
+
+.counter{
+  position:fixed;top:18px;right:22px;
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;
+  color:var(--text-muted);letter-spacing:0.06em;
+  pointer-events:none;z-index:20;
+}
+body.dark-mode .counter{color:rgba(253,231,238,0.5)}
+.counter .cur{color:var(--accent);font-weight:700}
+body.dark-mode .counter .cur{color:#FB7185}
+
+.brand-chip{
+  position:fixed;top:16px;left:22px;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 16px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:9999px;
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;
+  color:var(--accent);letter-spacing:0.1em;
+  backdrop-filter:blur(16px);
+  z-index:20;
+  box-shadow:var(--shadow-card);
+}
+body.dark-mode .brand-chip{background:rgba(255,255,255,0.06);border-color:rgba(253,164,175,0.2);color:#FB7185}
+.brand-chip .bdot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(225,29,72,0.5);animation:pulse 2s ease infinite}
+body.dark-mode .brand-chip .bdot{background:#FB7185}
+
+.nav{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:10px;
+  z-index:20;pointer-events:auto;
+}
+.nav-btn{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  backdrop-filter:blur(16px);
+  box-shadow:var(--shadow-card);
+  transition:all .3s ease;
+  color:var(--text-2);
+}
+body.dark-mode .nav-btn{background:rgba(255,255,255,0.06);border-color:rgba(253,164,175,0.2);color:rgba(253,231,238,0.8)}
+.nav-btn:hover{background:var(--bg-card-hover);border-color:var(--border-hover);box-shadow:var(--shadow-soft);transform:translateY(-2px);color:var(--accent)}
+body.dark-mode .nav-btn:hover{background:rgba(255,255,255,0.1);color:#FB7185;border-color:rgba(253,164,175,0.35)}
+.nav-btn:disabled{opacity:0.3;cursor:not-allowed;transform:none}
+.nav-btn svg{width:18px;height:18px}
+
+.nav-dots{
+  display:flex;gap:6px;padding:0 10px;align-items:center;
+}
+.nav-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--text-muted);opacity:0.3;
+  transition:all .3s ease;
+}
+.nav-dot.active{background:var(--accent);opacity:1;width:22px;border-radius:3px;box-shadow:0 0 8px rgba(225,29,72,0.4)}
+body.dark-mode .nav-dot{background:rgba(253,231,238,0.3)}
+body.dark-mode .nav-dot.active{background:#FB7185;box-shadow:0 0 10px rgba(251,113,133,0.5)}
+
+.hint{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;
+  color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;
+  opacity:0;animation:hintPulse 4s ease infinite;
+  z-index:15;pointer-events:none;
+}
+body.dark-mode .hint{color:rgba(253,231,238,0.45)}
+.hint.hide{display:none}
+@keyframes hintPulse{
+  0%,100%{opacity:0}
+  30%,70%{opacity:0.5}
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(.9)}}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .slide{padding:72px 22px 96px}
+  .ttl.hero{font-size:42px}
+  .ttl.big{font-size:34px}
+  .ttl.mid{font-size:26px}
+  .ttl.sm{font-size:22px}
+  .quote{font-size:24px}
+  .quote.xl{font-size:28px}
+  .lead{font-size:18px}
+  .sub{font-size:14px}
+  .steps{grid-template-columns:1fr;gap:10px}
+  .step{padding:18px 18px}
+  .step-num{font-size:24px}
+  .step-ttl{font-size:17px}
+  .compare{grid-template-columns:1fr;gap:12px}
+  .cbox{padding:20px 18px;min-height:auto}
+  .cbox-txt{font-size:13px}
+  .impact{padding:18px 20px}
+  .impact-txt{font-size:17px}
+  .exo{padding:22px 20px}
+  .bullets{max-width:100%}
+  .bullets li{font-size:14px;padding:8px 0 8px 20px}
+  .brand-chip{top:12px;left:14px;padding:6px 13px;font-size:9px}
+  .counter{top:14px;right:14px;font-size:10px}
+  .pbar{height:2px}
+  .nav{bottom:16px;gap:6px}
+  .nav-btn{width:40px;height:40px}
+  .nav-btn svg{width:16px;height:16px}
+  .nav-dots{gap:5px;padding:0 6px}
+  .nav-dot{width:5px;height:5px}
+  .nav-dot.active{width:18px}
+  .hint{bottom:70px;font-size:9px}
+  .qmark{font-size:80px}
+  .sig-orn{width:90px;height:90px}
+  .sig-orn svg{width:36px;height:36px}
+}
+@media(max-width:380px){
+  .ttl.hero{font-size:34px}
+  .ttl.big{font-size:28px}
+  .quote{font-size:21px}
+  .slide{padding:64px 18px 90px}
+}
+@supports(padding:max(0px)){
+  .pbar{top:env(safe-area-inset-top,0)}
+  .brand-chip{top:calc(12px + env(safe-area-inset-top,0))}
+  .counter{top:calc(14px + env(safe-area-inset-top,0))}
+  .nav{bottom:calc(16px + env(safe-area-inset-bottom,0))}
+}
+
+/* === TRANSITIONS BETWEEN LIGHT/DARK === */
+body.transitioning #meshBg{opacity:0.5}
+</style>
+</head>
+<body>
+<div id="meshBg">
+  <div class="mesh-orb o1"></div>
+  <div class="mesh-orb o2"></div>
+  <div class="mesh-orb o3"></div>
+</div>
+<canvas id="particles"></canvas>
+
+<div class="pbar" id="pbar" style="width:0%"></div>
+<div class="brand-chip"><div class="bdot"></div><span>FEMME-CHOISIE™</span></div>
+<div class="counter"><span class="cur" id="cur">1</span> / <span id="tot">35</span></div>
+
+<div id="deck">
+
+<!-- 1 TITRE -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Coaching · FEMME-CHOISIE™</div>
+    <h1 class="ttl hero">Réparer tes <em>schémas</em> d'enfance</h1>
+    <div class="ornament"></div>
+    <p class="sub">Le vrai travail. Sans bienveillance excessive. Sans mensonge.</p>
+  </div>
+</section>
+
+<!-- 2 HOOK -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Ouverture</div>
+    <h2 class="ttl big">Si tes deux parents t'ont <em>aimée</em> sans te blesser, tu n'es pas là.</h2>
+  </div>
+</section>
+
+<!-- 3 REFRAME -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <p class="lead">Tu as forcément vécu des choses qui t'empêchent aujourd'hui d'aimer librement.</p>
+    <p class="sub">Pas pour blâmer ta famille. Pour comprendre pourquoi tu répètes les mêmes scénarios.</p>
+  </div>
+</section>
+
+<!-- 4 HEADER PARTIE 1 (DARK) -->
+<section class="slide" data-dark="1">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Partie 1</div>
+    <h2 class="ttl big">Les 8 blessures qui <em>dirigent</em> tes choix amoureux</h2>
+  </div>
+</section>
+
+<!-- 5 BLESSURE 1 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°1</div>
+    <h2 class="ttl mid">Le parent <em>parti</em> ou mort</h2>
+    <ul class="bullets">
+      <li>Ton père est parti quand tu avais 5 ans</li>
+      <li>Ta mère est décédée quand tu en avais 10</li>
+      <li>Tu as grandi avec cette question sans réponse. <em>Pourquoi moi, pourquoi j'ai été abandonnée.</em></li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Tu cherches des hommes qui pourraient partir. Ou tu te prépares à leur départ avant même qu'il arrive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 BLESSURE 2 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°2</div>
+    <h2 class="ttl mid">Ils étaient là. Et pourtant tu étais <em>seule</em>.</h2>
+    <ul class="bullets">
+      <li>Dans la même maison que toi, absents dans leur tête</li>
+      <li>Jamais disponibles pour écouter</li>
+      <li>Jamais présents pour te consoler</li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Tu choisis des hommes qui ne voient pas quand tu vas mal. Tu as appris que ta présence ne déclenche rien.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 BLESSURE 3 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°3</div>
+    <h2 class="ttl mid">Pas de câlins. Pas de <em>« je t'aime »</em>.</h2>
+    <ul class="bullets">
+      <li>Pas un regard qui te dit que tu comptes</li>
+      <li>Tu as grandi en te demandant ce qu'il fallait faire pour être aimée</li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Tu te sur-donnes dès qu'un homme te regarde. Tu confonds attention et amour. Tu te vides pour une miette.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 BLESSURE 4 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°4</div>
+    <h2 class="ttl mid">Cris. Portes qui <em>claquent</em>. Silences qui pèsent plus que les cris.</h2>
+    <ul class="bullets">
+      <li>Tu rentrais de l'école le ventre noué</li>
+      <li>Ton corps a appris que l'amour est dangereux</li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Tu fuis tout conflit ou tu en crées sans le vouloir parce que le drame te paraît familier.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 BLESSURE 5 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°5</div>
+    <h2 class="ttl mid">Elle <em>se taisait</em>. Elle pliait. Elle encaissait.</h2>
+    <ul class="bullets">
+      <li>Tu t'es juré à 8 ans de ne jamais devenir elle</li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Tu écrases les hommes avant qu'ils puissent t'écraser. Tu confonds force et domination.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 BLESSURE 6 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°6</div>
+    <h2 class="ttl mid">Elle <em>décidait</em> tout. Elle le rabaissait. Il subissait.</h2>
+    <ul class="bullets">
+      <li>Tu as vu qu'un homme pouvait être humilié par sa femme</li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Soit tu reproduis le modèle de ta mère et tu prends toute la place. Soit tu cherches des hommes faibles pour te sentir en sécurité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 BLESSURE 7 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°7</div>
+    <h2 class="ttl mid">Un parent a <em>trompé</em> l'autre.</h2>
+    <ul class="bullets">
+      <li>Tu as vu ta mère pleurer</li>
+      <li>Tu as entendu des choses que tu n'aurais pas dû entendre</li>
+      <li>Ton cerveau a enregistré que l'amour ment</li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Tu surveilles, tu soupçonnes, tu cherches des preuves. Ou tu reproduis en devenant celle qui trompe avant d'être trompée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 BLESSURE 8 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Blessure n°8</div>
+    <h2 class="ttl mid">Alcool. Violence verbale. Humeurs <em>imprévisibles</em>.</h2>
+    <ul class="bullets">
+      <li>Chantage affectif permanent</li>
+      <li>Tu rentrais à la maison en scannant l'ambiance avant de parler</li>
+    </ul>
+    <div class="impact">
+      <span class="impact-lbl">Impact adulte</span>
+      <p class="impact-txt">Tu lis les hommes comme tu lisais ton parent. Hypervigilance permanente. Tu anticipes le danger même quand il n'existe pas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 HEADER PARTIE 2 (DARK) -->
+<section class="slide" data-dark="1">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Partie 2</div>
+    <h2 class="ttl big">Comment ton cerveau <em>reproduit</em> ces schémas aujourd'hui</h2>
+  </div>
+</section>
+
+<!-- 14 LE MÉCANISME -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Le mécanisme</div>
+    <h2 class="ttl mid">Ton cerveau ne distingue pas le <em>passé</em> du présent.</h2>
+    <ul class="bullets">
+      <li>Il scanne chaque situation relationnelle</li>
+      <li>Il cherche une correspondance dans ta mémoire émotionnelle</li>
+      <li>S'il trouve un pattern familier, il lance le même programme que celui de ton enfance</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 15 LA VÉRITÉ QUI DÉRANGE -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <span class="qmark">"</span>
+    <p class="quote">Tu réagis à 32 ans avec le système de survie que tu avais à 8 ans.</p>
+    <p class="sub">C'est automatique. Ça prend une fraction de seconde. Tu n'as même pas le temps de penser.</p>
+  </div>
+</section>
+
+<!-- 16 POURQUOI TU RETOMBES -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <h2 class="ttl big">Ton cerveau choisit ce qu'il <em>connaît</em>.</h2>
+    <p class="sub">Même si ce qu'il connaît te détruit.</p>
+  </div>
+</section>
+
+<!-- 17 HEADER PARTIE 3 (DARK) -->
+<section class="slide" data-dark="1">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Partie 3</div>
+    <h2 class="ttl big">Ce que <em>réparer</em> veut vraiment dire</h2>
+  </div>
+</section>
+
+<!-- 18 LA CROYANCE FAUSSE -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Le piège</div>
+    <h2 class="ttl mid">Beaucoup croient que guérir = ne plus être <em>déclenchée</em>.</h2>
+    <p class="sub">C'est faux. Et cette croyance te bloque.</p>
+  </div>
+</section>
+
+<!-- 19 LA VRAIE DÉFINITION -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <h2 class="ttl mid">Plus tu travailles sur toi, plus tu <em>vois</em> les situations où le schéma s'active.</h2>
+    <p class="sub">La différence c'est qu'entre le déclenchement et ta réaction, tu crées un espace. Dans cet espace, tu choisis.</p>
+  </div>
+</section>
+
+<!-- 20 CITATION CLÉ -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <span class="qmark">"</span>
+    <p class="quote xl">Guérir, c'est pas éviter les situations qui te blessent. C'est y faire face, sentir l'émotion monter, et choisir une réaction <em>différente</em>. Consciemment.</p>
+  </div>
+</section>
+
+<!-- 21 LES 4 ÉTAPES -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>La méthode</div>
+    <h2 class="ttl mid">Désactiver un schéma en <em>4 étapes</em></h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3 class="step-ttl">Reconnaître</h3>
+        <p class="step-txt">Ton corps se tend. Ta respiration change. Tu le sens avant de comprendre pourquoi.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3 class="step-ttl">Nommer</h3>
+        <p class="step-txt">« Ça, c'est le schéma du parent absent. C'est la petite fille qui panique, pas l'adulte. »</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3 class="step-ttl">Conscientiser la fausse vérité</h3>
+        <p class="step-txt">Ta mémoire te dit « il va partir ». La réalité : il est en réunion. C'était vrai à 6 ans. C'est plus vrai aujourd'hui.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h3 class="step-ttl">Choisir la réponse adulte</h3>
+        <p class="step-txt">Une femme sécurisée ferait quoi là ? Tu le fais. Même si ton corps hurle le contraire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22 HEADER PARTIE 5 (DARK) -->
+<section class="slide" data-dark="1">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Partie 5</div>
+    <h2 class="ttl big">5 situations <em>concrètes</em>. 5 réparations en live.</h2>
+  </div>
+</section>
+
+<!-- 23 EXEMPLE 1 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Exemple n°1 · Ta mère écrasait ton père</div>
+    <h2 class="ttl sm" style="margin-bottom:8px">Tu reproduis ou tu <em>répares</em> ?</h2>
+    <div class="compare">
+      <div class="cbox ka">
+        <div class="cbox-lbl"><span class="d"></span>Réaction automatique</div>
+        <p class="cbox-txt">Tu prends toutes les décisions. Tu coupes la parole à ton homme. Tu le corriges devant les autres.</p>
+      </div>
+      <div class="cbox rep">
+        <div class="cbox-lbl"><span class="d"></span>Réparation en live</div>
+        <p class="cbox-txt">Vous choisissez le restaurant. L'envie de décider à sa place monte. Tu pauses. Tu dis « toi tu veux quoi ». Tu le laisses choisir. Ton cerveau apprend qu'un homme qui décide n'écrase pas une femme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 24 EXEMPLE 2 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Exemple n°2 · Ton père est parti ou mort</div>
+    <h2 class="ttl sm" style="margin-bottom:8px">La panique de l'abandon.</h2>
+    <div class="compare">
+      <div class="cbox ka">
+        <div class="cbox-lbl"><span class="d"></span>Réaction automatique</div>
+        <p class="cbox-txt">Dès qu'un homme prend de la distance, tu entres en panique. Tu l'appelles dix fois. Tu penses qu'il est parti.</p>
+      </div>
+      <div class="cbox rep">
+        <div class="cbox-lbl"><span class="d"></span>Réparation en live</div>
+        <p class="cbox-txt">Il ne répond pas depuis 4 heures. Ton ventre se noue. Tu reconnais : c'est la petite fille qui a vu son père ne jamais revenir. Tu poses le téléphone. Tu fais autre chose de ta soirée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 25 EXEMPLE 3 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Exemple n°3 · Tes parents se disputaient tout le temps</div>
+    <h2 class="ttl sm" style="margin-bottom:8px">Le conflit n'est pas une guerre.</h2>
+    <div class="compare">
+      <div class="cbox ka">
+        <div class="cbox-lbl"><span class="d"></span>Réaction automatique</div>
+        <p class="cbox-txt">Dès qu'il dit quelque chose qui ne te plaît pas, tu exploses ou tu te fermes complètement.</p>
+      </div>
+      <div class="cbox rep">
+        <div class="cbox-lbl"><span class="d"></span>Réparation en live</div>
+        <p class="cbox-txt">Il te dit « j'ai pas envie de sortir ce soir ». Ton corps veut pleurer ou crier. Tu respires. Tu dis « ok, t'as besoin de quoi ». Ton cerveau découvre qu'un désaccord n'est pas une guerre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 26 EXEMPLE 4 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Exemple n°4 · Ta mère ne t'a jamais dit « je t'aime »</div>
+    <h2 class="ttl sm" style="margin-bottom:8px">La petite fille qui crie « aime-moi ».</h2>
+    <div class="compare">
+      <div class="cbox ka">
+        <div class="cbox-lbl"><span class="d"></span>Réaction automatique</div>
+        <p class="cbox-txt">Tu envoies des messages énormes d'amour après deux semaines. Tu te vides pour qu'il te remplisse.</p>
+      </div>
+      <div class="cbox rep">
+        <div class="cbox-lbl"><span class="d"></span>Réparation en live</div>
+        <p class="cbox-txt">Tu as le pouce sur « envoyer » pour un message de 500 mots après votre deuxième date. Tu reconnais : c'est la petite fille qui crie « aime-moi ». Tu effaces. Tu envoies « bonne journée ». Tu te dis à toi-même le « je t'aime » que tu voulais lui envoyer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 27 EXEMPLE 5 -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Exemple n°5 · Un parent a trompé l'autre</div>
+    <h2 class="ttl sm" style="margin-bottom:8px">Ce n'est pas lui que tu suspectes.</h2>
+    <div class="compare">
+      <div class="cbox ka">
+        <div class="cbox-lbl"><span class="d"></span>Réaction automatique</div>
+        <p class="cbox-txt">Tu vérifies son téléphone. Tu analyses ses silences. Tu le testes.</p>
+      </div>
+      <div class="cbox rep">
+        <div class="cbox-lbl"><span class="d"></span>Réparation en live</div>
+        <p class="cbox-txt">Il rentre tard. L'envie de regarder son téléphone monte. Tu reconnais : c'est pas lui que tu suspectes, c'est ton père que tu n'as jamais pu confronter. Tu laisses son téléphone où il est. Tu lui poses une question directe à la place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 28 HEADER PARTIE 6 (DARK) -->
+<section class="slide" data-dark="1">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Partie 6</div>
+    <h2 class="ttl big">La <em>douleur</em> nécessaire</h2>
+  </div>
+</section>
+
+<!-- 29 MESSAGE DUR -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <h2 class="ttl big">Changer un schéma te fera <em>mal</em>.</h2>
+    <p class="sub">Pas parce que tu fais quelque chose de mal. Parce que tu fais quelque chose de nouveau.</p>
+  </div>
+</section>
+
+<!-- 30 RÉSISTANCE -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <p class="lead">Ton cerveau a construit ces schémas pour te protéger à une époque où tu en avais besoin.</p>
+    <p class="sub">Quand tu les désactives, il proteste. Il crée de l'anxiété, du doute, l'envie de revenir en arrière. Tu vas avoir l'impression que ça empire. C'est le signe que ça marche.</p>
+  </div>
+</section>
+
+<!-- 31 PREMIER MOIS -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <h2 class="ttl mid">Les premières fois, réagir différemment va te coûter une <em>énergie folle</em>.</h2>
+    <p class="sub">Tu vas y penser toute la journée. Tu vas douter. Tu vas vouloir envoyer le message, fouiller le téléphone, imposer ton choix. Tu ne le fais pas. Et le lendemain tu recommences.</p>
+  </div>
+</section>
+
+<!-- 32 NOUVEAU CÂBLAGE -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Pour conclure</div>
+    <h2 class="ttl mid">Chaque fois que tu réagis différemment, tu creuses un nouveau <em>chemin</em> dans ton cerveau.</h2>
+    <p class="sub">Dix fois, c'est dur. Cent fois, c'est automatique. C'est comme ça que tu répares un schéma.</p>
+  </div>
+</section>
+
+<!-- 33 EXERCICE -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="tag"><div class="dot"></div>Exercice de la semaine</div>
+    <h2 class="ttl mid">Le carnet des <em>triggers</em></h2>
+    <div class="exo">
+      <span class="exo-lbl">Chaque fois qu'un trigger t'active cette semaine</span>
+      <p class="exo-txt">Note dans un carnet : la situation, l'émotion qui est montée, ta réaction automatique, et ce que tu aurais pu faire à la place.</p>
+      <div class="exo-sep"></div>
+      <span class="exo-lbl">Objectif</span>
+      <p class="exo-txt">Tu vas voir que les mêmes schémas reviennent. C'est ton programme. Et maintenant tu sais que tu peux le changer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 34 CLOSING -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <span class="qmark">"</span>
+    <p class="quote xl">La femme que tu veux devenir existe déjà. Elle attend juste que tu arrêtes de laisser la <em>petite fille</em> conduire.</p>
+  </div>
+</section>
+
+<!-- 35 SIGNATURE -->
+<section class="slide" data-dark="0">
+  <div class="sc">
+    <div class="sig-orn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+    </div>
+    <div class="brand"><div class="bdot"></div><span>FEMME-CHOISIE™</span></div>
+    <p class="sig-cp">© Yakine Ousseni</p>
+  </div>
+</section>
+
+</div>
+
+<div class="hint" id="hint">Flèches · Espace · Swipe</div>
+
+<div class="nav">
+  <button class="nav-btn" id="prev" aria-label="Précédent">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="nav-dots" id="dots"></div>
+  <button class="nav-btn" id="next" aria-label="Suivant">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  const slides=document.querySelectorAll('.slide');
+  const total=slides.length;
+  const pbar=document.getElementById('pbar');
+  const curEl=document.getElementById('cur');
+  const totEl=document.getElementById('tot');
+  const prevBtn=document.getElementById('prev');
+  const nextBtn=document.getElementById('next');
+  const dotsEl=document.getElementById('dots');
+  const hint=document.getElementById('hint');
+  let current=0;
+  let animating=false;
+
+  totEl.textContent=total;
+
+  // Build dots
+  slides.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='nav-dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>go(i));
+    dotsEl.appendChild(d);
+  });
+  const dots=dotsEl.querySelectorAll('.nav-dot');
+
+  function setDark(isDark){
+    document.body.classList.toggle('dark-mode',isDark);
+  }
+
+  function go(idx){
+    if(idx<0||idx>=total||idx===current||animating) return;
+    animating=true;
+    const prev=slides[current];
+    const nxt=slides[idx];
+    prev.classList.add('leaving');
+    prev.classList.remove('active');
+    setTimeout(()=>{
+      prev.classList.remove('leaving');
+      nxt.classList.add('active');
+      current=idx;
+      updateChrome();
+      setDark(nxt.dataset.dark==='1');
+      setTimeout(()=>{animating=false},650);
+    },80);
+  }
+
+  function updateChrome(){
+    curEl.textContent=current+1;
+    pbar.style.width=(((current+1)/total)*100)+'%';
+    dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+    prevBtn.disabled=current===0;
+    nextBtn.disabled=current===total-1;
+    if(current>0 && hint && !hint.classList.contains('hide')){
+      hint.classList.add('hide');
+    }
+  }
+
+  function next(){go(current+1)}
+  function prev(){go(current-1)}
+
+  prevBtn.addEventListener('click',prev);
+  nextBtn.addEventListener('click',next);
+
+  document.addEventListener('keydown',(e)=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+    else if(e.key==='Home'){e.preventDefault();go(0)}
+    else if(e.key==='End'){e.preventDefault();go(total-1)}
+  });
+
+  // Touch swipe
+  let tsX=0,tsY=0,teX=0,teY=0;
+  document.addEventListener('touchstart',(e)=>{
+    tsX=e.changedTouches[0].screenX;
+    tsY=e.changedTouches[0].screenY;
+  },{passive:true});
+  document.addEventListener('touchend',(e)=>{
+    teX=e.changedTouches[0].screenX;
+    teY=e.changedTouches[0].screenY;
+    const dx=teX-tsX, dy=teY-tsY;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5){
+      if(dx<0) next(); else prev();
+    }
+  },{passive:true});
+
+  // Wheel nav (desktop) - debounced
+  let wheelLock=false;
+  document.addEventListener('wheel',(e)=>{
+    if(wheelLock||animating) return;
+    if(Math.abs(e.deltaY)<30) return;
+    wheelLock=true;
+    if(e.deltaY>0) next(); else prev();
+    setTimeout(()=>{wheelLock=false},800);
+  },{passive:true});
+
+  // Initialize
+  slides[0].classList.add('active');
+  setDark(slides[0].dataset.dark==='1');
+  updateChrome();
+
+  // === Particles ===
+  const canvas=document.getElementById('particles');
+  const ctx=canvas.getContext('2d');
+  let W=0,H=0,parts=[];
+  function resize(){
+    W=canvas.width=window.innerWidth*devicePixelRatio;
+    H=canvas.height=window.innerHeight*devicePixelRatio;
+    canvas.style.width=window.innerWidth+'px';
+    canvas.style.height=window.innerHeight+'px';
+  }
+  function initParts(){
+    parts=[];
+    const count=Math.min(40,Math.floor((window.innerWidth*window.innerHeight)/30000));
+    for(let i=0;i<count;i++){
+      parts.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        r:(Math.random()*2+0.5)*devicePixelRatio,
+        vx:(Math.random()-0.5)*0.2*devicePixelRatio,
+        vy:(Math.random()-0.5)*0.2*devicePixelRatio,
+        a:Math.random()*0.4+0.1
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const isDark=document.body.classList.contains('dark-mode');
+    const col=isDark?'251,113,133':'225,29,72';
+    parts.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba('+col+','+p.a+')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  resize(); initParts(); draw();
+  window.addEventListener('resize',()=>{resize();initParts()});
+})();
+</script>
+</body>
+</html>
