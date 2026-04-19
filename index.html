@@ -651,8 +651,9 @@ body.transitioning #meshBg{opacity:0.5}
 <!-- 9 BLESSURE 5 -->
 <section class="slide" data-dark="0">
   <div class="sc">
-    <div class="tag"><div class="dot"></div>Blessure n°5</div>
-    <h2 class="ttl mid">Elle <em>se taisait</em>. Elle pliait. Elle encaissait.</h2>
+    <div class="tag"><div class="dot"></div>Blessure n°5 · Ton père dominait ta mère</div>
+    <h2 class="ttl mid">Ton père <em>dominait</em> ta mère.</h2>
+    <p class="sub">Elle se taisait. Elle pliait. Elle encaissait.</p>
     <ul class="bullets">
       <li>Tu t'es juré à 8 ans de ne jamais devenir elle</li>
     </ul>
@@ -666,8 +667,9 @@ body.transitioning #meshBg{opacity:0.5}
 <!-- 10 BLESSURE 6 -->
 <section class="slide" data-dark="0">
   <div class="sc">
-    <div class="tag"><div class="dot"></div>Blessure n°6</div>
-    <h2 class="ttl mid">Elle <em>décidait</em> tout. Elle le rabaissait. Il subissait.</h2>
+    <div class="tag"><div class="dot"></div>Blessure n°6 · Ta mère dominait ton père</div>
+    <h2 class="ttl mid">Ta mère <em>dominait</em> ton père.</h2>
+    <p class="sub">Elle décidait tout. Elle le rabaissait. Il subissait.</p>
     <ul class="bullets">
       <li>Tu as vu qu'un homme pouvait être humilié par sa femme</li>
     </ul>
@@ -987,17 +989,6 @@ body.transitioning #meshBg{opacity:0.5}
 
 </div>
 
-<div class="hint" id="hint">Flèches · Espace · Swipe</div>
-
-<div class="nav">
-  <button class="nav-btn" id="prev" aria-label="Précédent">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
-  <div class="nav-dots" id="dots"></div>
-  <button class="nav-btn" id="next" aria-label="Suivant">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-  </button>
-</div>
 
 <script>
 (function(){
@@ -1006,23 +997,10 @@ body.transitioning #meshBg{opacity:0.5}
   const pbar=document.getElementById('pbar');
   const curEl=document.getElementById('cur');
   const totEl=document.getElementById('tot');
-  const prevBtn=document.getElementById('prev');
-  const nextBtn=document.getElementById('next');
-  const dotsEl=document.getElementById('dots');
-  const hint=document.getElementById('hint');
   let current=0;
   let animating=false;
 
   totEl.textContent=total;
-
-  // Build dots
-  slides.forEach((_,i)=>{
-    const d=document.createElement('div');
-    d.className='nav-dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>go(i));
-    dotsEl.appendChild(d);
-  });
-  const dots=dotsEl.querySelectorAll('.nav-dot');
 
   function setDark(isDark){
     document.body.classList.toggle('dark-mode',isDark);
@@ -1048,19 +1026,10 @@ body.transitioning #meshBg{opacity:0.5}
   function updateChrome(){
     curEl.textContent=current+1;
     pbar.style.width=(((current+1)/total)*100)+'%';
-    dots.forEach((d,i)=>d.classList.toggle('active',i===current));
-    prevBtn.disabled=current===0;
-    nextBtn.disabled=current===total-1;
-    if(current>0 && hint && !hint.classList.contains('hide')){
-      hint.classList.add('hide');
-    }
   }
 
   function next(){go(current+1)}
   function prev(){go(current-1)}
-
-  prevBtn.addEventListener('click',prev);
-  nextBtn.addEventListener('click',next);
 
   document.addEventListener('keydown',(e)=>{
     if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
